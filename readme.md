@@ -1,5 +1,8 @@
 # How to Use
-
+## Start the Virtual Env
+Open the CLI and go to the current folder and type <code>venv\Scripts\activate</code>
+## Install the required packages
+pip install -r requirements.txt
 <hr>
 
 
