@@ -1,8 +1,7 @@
-#To Add:
+# To Add:
 <html>
-<ul>
+<ol>
 <li>Persistence function is yet to be implemented.</li>
-<li>Persistence function is yet to be implemented.</li>
-<li>Persistence function is yet to be implemented.</li>
-</ul>
+<li>Command Control function to create a botnet is yet to be implemented.</li>
+</ol>
 </html>
