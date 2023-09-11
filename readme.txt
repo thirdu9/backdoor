@@ -1,1 +1,7 @@
-persistance function chesa inka filelocation ela extract cheyyalo chuskoni function ni command ki connect chey 
+#To Add:
+
+<ul>
+<li>Persistence function is yet to be implemented.</li>
+<li>Persistence function is yet to be implemented.</li>
+<li>Persistence function is yet to be implemented.</li>
+</ul>
