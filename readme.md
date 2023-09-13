@@ -10,7 +10,7 @@ pip install -r requirements.txt
 ```
 
 ## Configure files
-Open the `Backdoor.py` and `server.py` files in code editors. Change the ***[IP Address]*** to your IP Address and save the files.
+Open the [`Backdoor.py`](backdoor.py) and [`server.py`](server.py) files in code editors. Change the ***[IP Address]*** to your IP Address and save the files.
 
 ## Run the program
 The `Backdoor.py` file should be in the target's device, run it on the target device(Windows or Linux).
