@@ -2,10 +2,9 @@
 FOR EDUCATIONAL PURPOSES ONLY
 
 
-## Start the Virtual Env & Install the required packages
+## Install the required packages
 Open the CLI go to the current folder type to start the venv and install the required packages.
 ```
-venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
@@ -23,9 +22,10 @@ Then run the `server.py` file on your PC.
 <html>
 <ol>
 <li>Persistence function is yet to be implemented.</li>
+<li>Keylogger</li>
 <li>Command Control function to create a botnet is yet to be implemented.</li>
 </ol>
 </html>
 
 
-I am not accountable for any misuse of the project
+I am not accountable for any misuse of the project.

